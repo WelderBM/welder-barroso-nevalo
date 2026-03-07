@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welder Barroso — Nevalo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lora:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <canvas id="bg"></canvas>
+
+    <!-- NAV -->
+    <nav>
+      <a href="#hero" class="nav-logo">
+        <svg width="32" height="32" viewBox="0 0 88 88" fill="none">
+          <path
+            d="M18 62 L18 26 L44 56 L44 26"
+            stroke="var(--teal)"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+          <path
+            d="M44 26 L44 62"
+            stroke="var(--teal)"
+            stroke-width="5"
+            stroke-linecap="round"
+            fill="none"
+          />
+          <circle cx="44" cy="56" r="5" fill="var(--teal)" />
+          <circle cx="18" cy="26" r="3.5" fill="var(--gold)" />
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-eyebrow">× Frontend Developer × Software Engineer ×</div>
+      <h1 class="hero-name">
+        <span class="first">Welder</span>
+        <span class="last">Barroso</span>
+      </h1>
+      <div class="hero-role">Flow through every connection</div>
+      <p class="hero-desc">
+        Desenvolvedor frontend baseado em <em>Roraima, Brasil</em> — criando
+        interfaces que conectam pessoas e sistemas com
+        <em>fluidez e propósito.</em>
+      </p>
+      <div class="hero-ctas">
+        <a href="#projetos" class="btn btn-primary">Ver Projetos →</a>
+        <a href="#contato" class="btn btn-ghost">Falar Comigo</a>
+      </div>
+      <div class="hero-scroll">Scroll para explorar</div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="sobre-grid reveal">
+        <div class="sobre-left">
+          <div class="sobre-tag">Sobre mim</div>
+          <h2 class="sobre-title">Tecnologia<br />com alma.</h2>
+          <p class="sobre-text">
+            Sou <strong>Welder Barroso</strong> — desenvolvedor frontend com
+            formação técnica em informática pelo
+            <em>Instituto de Tecnologia de Roraima</em> e acadêmico de
+            Engenharia de Software.
+          </p>
+          <p class="sobre-text">
+            Acredito que cada linha de código é uma
+            <em>ponte entre pessoas</em>. Construo não apenas para funcionar —
+            mas para <em>conectar, facilitar e servir.</em>
+          </p>
+          <p class="sobre-text">
+            Trabalho com React, Next.js e o ecossistema JavaScript moderno.
+            Estudo fullstack. Crio projetos que resolvem problemas reais de
+            pessoas reais.
+          </p>
+        </div>
+        <div class="sobre-right">
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-n">3+</div>
+              <div class="stat-label">Anos de experiência</div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">19</div>
+              <div class="stat-label">Repositórios públicos</div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">React</div>
+              <div class="stat-label">Stack principal</div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">∞</div>
+              <div class="stat-label">Projetos em mente</div>
+            </div>
+          </div>
+          <div class="about-loc">
+            <div class="loc-dot"></div>
+            <div class="loc-text">Roraima, Brasil — disponível para remoto</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- STACK -->
+    <section id="stack">
+      <div class="sec-header reveal">
+        <div class="sec-tag">Tecnologias</div>
+        <h2 class="sec-title">Minha Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="tech">
+          <div class="tech-icon"><i class="fa-brands fa-js"></i></div>
+          <div class="tech-name">JavaScript</div>
+        </div>
+        <div class="tech">
+          <div class="tech-icon"><i class="fa-brands fa-react"></i></div>
+          <div class="tech-name">React</div>
+        </div>
+        <div class="tech">
+          <div class="tech-icon"><i class="fa-solid fa-n"></i></div>
+          <div class="tech-name">Next.js</div>
+        </div>
+        <div class="tech">
+          <div class="tech-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="tech-name">Vite</div>
+        </div>
+        <div class="tech">
+          <div class="tech-icon"><i class="fa-solid fa-code"></i></div>
+          <div class="tech-name">CSS / HTML</div>
+        </div>
+        <div class="tech">
+          <div class="tech-icon"><i class="fa-brands fa-figma"></i></div>
+          <div class="tech-name">Figma</div>
+        </div>
+        <div class="tech">
+          <div class="tech-icon"><i class="fa-brands fa-git-alt"></i></div>
+          <div class="tech-name">Git / GitHub</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PROJETOS -->
+    <section id="projetos">
+      <div class="sec-header reveal">
+        <div class="sec-tag">Portfólio</div>
+        <h2 class="sec-title">Projetos em Destaque</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="proj reveal">
+          <div class="proj-type">UI · CSS</div>
+          <div class="proj-title">Black & White Login</div>
+          <p class="proj-desc">
+            Tela de login com estética monocromática elegante — foco em
+            tipografia e contraste.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag">HTML</span>
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">UI Design</span>
+          </div>
+          <a
+            href="https://github.com/WelderBM/BlackAndWhiteLogin"
+            target="_blank"
+            class="proj-link"
+          >
+            Ver no GitHub →
+          </a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-type">App · JavaScript</div>
+          <div class="proj-title">Burger App</div>
+          <p class="proj-desc">
+            Aplicação de pedidos de hambúrguer — interface interativa com
+            JavaScript puro.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag">JavaScript</span>
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">DOM</span>
+          </div>
+          <a
+            href="https://github.com/WelderBM/BurgerApp"
+            target="_blank"
+            class="proj-link"
+          >
+            Ver no GitHub →
+          </a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-type">Landing Page · HTML</div>
+          <div class="proj-title">Bakery Landing</div>
+          <p class="proj-desc">
+            Landing page para padaria artesanal — layout responsivo com
+            identidade visual acolhedora.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag">HTML</span>
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">Responsivo</span>
+          </div>
+          <a
+            href="https://github.com/WelderBM/landingPage-bakery"
+            target="_blank"
+            class="proj-link"
+          >
+            Ver no GitHub →
+          </a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-type">UI · Desafio</div>
+          <div class="proj-title">Photography Login</div>
+          <p class="proj-desc">
+            Desafio frontend — tela de login para estúdio fotográfico com
+            atmosfera visual imersiva.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag">JavaScript</span>
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">Challenge</span>
+          </div>
+          <a
+            href="https://github.com/WelderBM/LoginPage-photography"
+            target="_blank"
+            class="proj-link"
+          >
+            Ver no GitHub →
+          </a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-type">UI · Dark Theme</div>
+          <div class="proj-title">Login Screen Dark</div>
+          <p class="proj-desc">
+            Tela de login com tema escuro — exploração de gradientes, sombras e
+            microinterações.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag">HTML</span>
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">Dark UI</span>
+          </div>
+          <a
+            href="https://github.com/WelderBM/LoginScreen-Dark"
+            target="_blank"
+            class="proj-link"
+          >
+            Ver no GitHub →
+          </a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-type">Landing Page · Temático</div>
+          <div class="proj-title">Halloween Landing</div>
+          <p class="proj-desc">
+            Landing page temática de Halloween — animações CSS, paleta dramática
+            e atmosfera imersiva.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">Animações</span>
+            <span class="proj-tag">Temático</span>
+          </div>
+          <a
+            href="https://github.com/WelderBM/Halloween-landingPage"
+            target="_blank"
+            class="proj-link"
+          >
+            Ver no GitHub →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EXPERIÊNCIA PROFISSIONAL -->
+    <section id="experiencia">
+      <div class="sec-header reveal">
+        <div class="sec-tag">Trajetória</div>
+        <h2 class="sec-title">Experiência Profissional</h2>
+      </div>
+
+      <div class="timeline reveal">
+        <!-- Pigz -->
+        <div class="tl-item">
+          <div class="tl-marker">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-company">Pigz</div>
+            <div class="tl-period">
+              fev 2025 — mai 2025 · 4 meses · Boa Vista, RR
+            </div>
+
+            <div class="tl-role-block">
+              <div class="tl-role">Software Engineer Web Front-End</div>
+              <div class="tl-role-period">abr 2025 – mai 2025</div>
+              <p class="tl-desc">
+                Desenvolvimento de aplicações web escaláveis com React.js,
+                Next.js e TypeScript. Liderou a resolução de hotfixes críticos
+                em produção. Implementou gerenciamento de estado com Redux e
+                colaborou ativamente em metodologias ágeis (Scrum) com Jira e
+                GitHub. Contribuiu para um design system coeso com foco em UI/UX
+                e acessibilidade.
+              </p>
+            </div>
+
+            <div class="tl-role-block">
+              <div class="tl-role">Software Engineer Mobile Front-End</div>
+              <div class="tl-role-period">fev 2025 – abr 2025</div>
+              <p class="tl-desc">
+                Desenvolveu e manteve aplicativos cross-platform (iOS/Android)
+                de alta performance com React Native e TypeScript. Integração e
+                otimização de maquininhas de cartão para transações seguras.
+                Participou de cerimônias Scrum e utilizou Jira e GitHub para
+                gestão ágil.
+              </p>
+            </div>
+
+            <div class="tl-tags">
+              <span class="tl-tag">React.js</span>
+              <span class="tl-tag">Next.js</span>
+              <span class="tl-tag">React Native</span>
+              <span class="tl-tag">TypeScript</span>
+              <span class="tl-tag">Redux</span>
+              <span class="tl-tag">Scrum</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- R2T -->
+        <div class="tl-item">
+          <div class="tl-marker">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-company">R2T — Rebel Thinking Tech</div>
+            <div class="tl-period">
+              fev 2022 — dez 2022 · 11 meses · Boa Vista, RR
+            </div>
+
+            <div class="tl-role-block">
+              <div class="tl-role">Desenvolvedor Web Front-End</div>
+              <p class="tl-desc">
+                Responsável técnico pelo Front-End de sistemas responsivos com
+                React.js, Next.js, JavaScript, HTML5 e CSS3. Realizou
+                atualização completa de projetos para a versão moderna do
+                Next.js com foco em performance (Google Lighthouse). Colaborou
+                com designers para arquitetura visual e UI/UX. Implementou
+                Storybook para documentação de componentes e contribuiu em
+                operações críticas de deploy e rollback via Git.
+              </p>
+            </div>
+
+            <div class="tl-tags">
+              <span class="tl-tag">React.js</span>
+              <span class="tl-tag">Next.js</span>
+              <span class="tl-tag">JavaScript</span>
+              <span class="tl-tag">Storybook</span>
+              <span class="tl-tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Club -->
+        <div class="tl-item">
+          <div class="tl-marker">
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-company">Code Club / DevClub</div>
+            <div class="tl-period">
+              out 2021 — jan 2022 · 4 meses · Boa Vista, RR
+            </div>
+
+            <div class="tl-role-block">
+              <div class="tl-role">Aluno DevClub Front-End</div>
+              <p class="tl-desc">
+                Estudo em tempo integral com videoaulas, desafios práticos e
+                projetos pessoais. Aprendizado de HTML5, CSS3, JavaScript,
+                Node.js, Express e React.js.
+              </p>
+            </div>
+
+            <div class="tl-tags">
+              <span class="tl-tag">HTML5</span>
+              <span class="tl-tag">CSS3</span>
+              <span class="tl-tag">JavaScript</span>
+              <span class="tl-tag">Node.js</span>
+              <span class="tl-tag">React.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FORMAÇÃO E CURSOS -->
+    <section id="formacao">
+      <div class="sec-header reveal">
+        <div class="sec-tag">Conhecimento</div>
+        <h2 class="sec-title">Formação &amp; Cursos</h2>
+      </div>
+
+      <div class="edu-grid reveal">
+        <!-- ITEAM -->
+        <div class="edu-card">
+          <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="edu-info">
+            <div class="edu-inst">
+              ITEAM — Instituto Tecnológico Educacional da Amazônia
+            </div>
+            <div class="edu-degree">
+              Ensino Técnico · Desenvolvimento Web Full Stack
+            </div>
+            <div class="edu-period">
+              jan 2026 — jul 2026
+              <span class="edu-badge edu-badge--active">Em andamento</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SENAI SP -->
+        <div class="edu-card">
+          <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
+          <div class="edu-info">
+            <div class="edu-inst">SENAI São Paulo</div>
+            <div class="edu-degree">
+              Desenvolvedor Web Frontend · Programação de Computadores
+            </div>
+            <div class="edu-period">fev 2025 — mai 2025</div>
+          </div>
+        </div>
+
+        <!-- Cubos Academy -->
+        <div class="edu-card">
+          <div class="edu-icon"><i class="fa-solid fa-cube"></i></div>
+          <div class="edu-info">
+            <div class="edu-inst">Cubos Academy</div>
+            <div class="edu-degree">Programação de Computadores</div>
+            <div class="edu-period">jul 2023 — dez 2023</div>
+          </div>
+        </div>
+
+        <!-- Code Club Fullstack -->
+        <div class="edu-card">
+          <div class="edu-icon"><i class="fa-solid fa-code"></i></div>
+          <div class="edu-info">
+            <div class="edu-inst">Code Club / DevClub</div>
+            <div class="edu-degree">
+              Desenvolvedor FullStack · React.js, Node.js · Programação Web
+            </div>
+            <div class="edu-period">out 2021 — out 2023</div>
+          </div>
+        </div>
+
+        <!-- IFRR -->
+        <div class="edu-card edu-card--highlight">
+          <div class="edu-icon"><i class="fa-solid fa-landmark"></i></div>
+          <div class="edu-info">
+            <div class="edu-inst">Instituto Federal de Roraima — IFRR</div>
+            <div class="edu-degree">
+              Técnico em Informática Integrado ao Ensino Médio
+            </div>
+            <div class="edu-period">jan 2019 — dez 2021</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CERTIFICAÇÕES -->
+      <div class="sec-header reveal" style="margin-top: 64px">
+        <div class="sec-tag">Conquistas</div>
+        <h2 class="sec-title">Certificações</h2>
+      </div>
+
+      <div class="certs-grid reveal">
+        <div class="cert-item">
+          <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
+          <div class="cert-name">Desenvolvedor Web Frontend</div>
+          <div class="cert-issuer">SENAI São Paulo</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="cert-name">2025 NASA Space Apps Challenge</div>
+          <div class="cert-issuer">NASA</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon"><i class="fa-solid fa-server"></i></div>
+          <div class="cert-name">Desenvolvimento Backend</div>
+          <div class="cert-issuer">Cubos Academy</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="cert-name">Técnico de Informática</div>
+          <div class="cert-issuer">IFRR</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="contato-inner">
+        <div class="sec-tag reveal">Contato</div>
+        <h2 class="contato-title reveal">
+          Vamos<br /><span class="teal">construir</span><br />juntos?
+        </h2>
+        <p class="contato-sub reveal">
+          Aberto a projetos freelance, oportunidades de trabalho e colaborações
+          que façam sentido. Se o que você viu ressoou — fala comigo.
+        </p>
+        <div class="contact-links reveal">
+          <a
+            href="https://wa.me/5595984006377"
+            target="_blank"
+            class="contact-item"
+          >
+            <div class="ci-left">
+              <div class="ci-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div>
+                <div class="ci-label">WhatsApp</div>
+                <div class="ci-value">+55 (95) 98400-6377</div>
+              </div>
+            </div>
+            <div class="ci-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+          <a href="mailto:welderbarroso.dev@gmail.com" class="contact-item">
+            <div class="ci-left">
+              <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <div class="ci-label">Email</div>
+                <div class="ci-value">welderbarroso.dev@gmail.com</div>
+              </div>
+            </div>
+            <div class="ci-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/welder-barroso-37b654207/"
+            target="_blank"
+            class="contact-item"
+          >
+            <div class="ci-left">
+              <div class="ci-icon"><i class="fa-brands fa-linkedin"></i></div>
+              <div>
+                <div class="ci-label">LinkedIn</div>
+                <div class="ci-value">Welder Barroso de Melo</div>
+              </div>
+            </div>
+            <div class="ci-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+          <a
+            href="https://github.com/WelderBM"
+            target="_blank"
+            class="contact-item"
+          >
+            <div class="ci-left">
+              <div class="ci-icon"><i class="fa-brands fa-github"></i></div>
+              <div>
+                <div class="ci-label">GitHub</div>
+                <div class="ci-value">@WelderBM</div>
+              </div>
+            </div>
+            <div class="ci-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="foot-logo"><span class="na">W</span>bm</div>
+      <div class="foot-copy">
+        © 2026 Welder Barroso · Feito com fluxo e propósito
+      </div>
+    </footer>
+    <script src="./scripts.js"></script>
+  </body>
+</html>

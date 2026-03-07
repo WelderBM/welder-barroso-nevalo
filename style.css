@@ -1,0 +1,1019 @@
+:root {
+    --ink: #03080f;
+    --deep: #060e1c;
+    --navy: #0a1628;
+    --surface: #0e1e34;
+    --surface2: #142540;
+    --teal: #1be4c8;
+    --teal-dim: rgba(27, 228, 200, 0.1);
+    --teal-glow: rgba(27, 228, 200, 0.05);
+    --water: #a8d8ea;
+    --gold: #d4a853;
+    --white: #f0f4f8;
+    --mist: #7a90a4;
+    --mist2: #3d5166;
+    --border: rgba(168, 216, 234, 0.07);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--teal);
+    color: var(--ink);
+}
+
+body {
+    background: var(--ink);
+    color: var(--white);
+    font-family: "DM Mono", monospace;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* CURSOR */
+.cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition:
+        transform 0.1s,
+        background 0.2s;
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(27, 228, 200, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition:
+        transform 0.15s ease,
+        width 0.2s,
+        height 0.2s;
+}
+
+/* CANVAS */
+#bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom,
+            rgba(3, 8, 15, 0.95),
+            transparent);
+    backdrop-filter: blur(2px);
+}
+
+.nav-logo {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo .na {
+    color: var(--teal);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--mist);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--teal);
+}
+
+/* SECTIONS */
+section {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ── HERO ── */
+#hero {
+    padding: 120px 48px 80px;
+    overflow: hidden;
+}
+
+.hero-eyebrow {
+    font-size: 0.52rem;
+    letter-spacing: 0.5em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.7;
+    animation: fadeUp 0.6s ease both;
+}
+
+.hero-name {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(4.5rem, 13vw, 10rem);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    animation: fadeUp 0.7s 0.1s ease both;
+    position: relative;
+}
+
+.hero-name .first {
+    display: block;
+    color: var(--white);
+}
+
+.hero-name .last {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(27, 228, 200, 0.4);
+}
+
+.hero-role {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    margin-top: 16px;
+    animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-desc {
+    font-family: "Lora", serif;
+    font-size: clamp(0.85rem, 1.4vw, 1rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mist);
+    line-height: 1.8;
+    max-width: 460px;
+    margin-top: 24px;
+    animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    font-family: "DM Mono", monospace;
+}
+
+.btn-primary {
+    background: var(--teal);
+    color: var(--ink);
+}
+
+.btn-primary:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    border: 1px solid var(--mist2);
+    color: var(--mist);
+}
+
+.btn-ghost:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    transform: translateY(-2px);
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    font-size: 0.48rem;
+    letter-spacing: 0.4em;
+    color: var(--mist2);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: fadeUp 0.7s 0.6s ease both;
+}
+
+.hero-scroll::before {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: var(--mist2);
+}
+
+/* ── SOBRE ── */
+#sobre {
+    padding: 100px 48px;
+    background: var(--deep);
+}
+
+.sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.sobre-tag {
+    font-size: 0.52rem;
+    letter-spacing: 0.45em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.sobre-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 28px;
+}
+
+.sobre-text {
+    font-family: "Lora", serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--mist);
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+.sobre-text em {
+    color: var(--teal);
+    font-style: normal;
+}
+
+.sobre-text strong {
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+}
+
+.stat {
+    background: var(--surface);
+    padding: 28px 24px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.stat:hover {
+    border-color: var(--teal);
+}
+
+.stat-n {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.04em;
+    color: var(--teal);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    color: var(--mist);
+    text-transform: uppercase;
+    margin-top: 6px;
+}
+
+.about-loc {
+    margin-top: 2px;
+    background: var(--surface);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.loc-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(27, 228, 200, 0.15);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 4px rgba(27, 228, 200, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(27, 228, 200, 0.05);
+    }
+}
+
+.loc-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--mist);
+    text-transform: uppercase;
+}
+
+/* ── STACK ── */
+#stack {
+    padding: 100px 48px;
+}
+
+.sec-header {
+    margin-bottom: 48px;
+}
+
+.sec-tag {
+    font-size: 0.52rem;
+    letter-spacing: 0.45em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.7;
+}
+
+.sec-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+    color: var(--white);
+}
+
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 2px;
+}
+
+.tech {
+    background: var(--deep);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.25s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+}
+
+.tech:hover {
+    background: var(--surface);
+}
+
+.tech:hover::after {
+    transform: scaleX(1);
+}
+
+.tech-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--teal);
+    transition: color 0.25s, transform 0.25s;
+}
+
+.tech:hover .tech-icon {
+    color: var(--white);
+    transform: scale(1.15);
+}
+
+.tech-name {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--mist);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* ── PROJETOS ── */
+#projetos {
+    padding: 100px 48px;
+    background: var(--deep);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+}
+
+.proj {
+    background: var(--navy);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.proj:hover {
+    background: var(--surface);
+    border-color: var(--teal);
+    transform: translateY(-3px);
+}
+
+.proj-type {
+    font-size: 0.48rem;
+    letter-spacing: 0.35em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.7;
+}
+
+.proj-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.proj-desc {
+    font-family: "Lora", serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mist);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.proj-tag {
+    font-size: 0.48rem;
+    letter-spacing: 0.2em;
+    color: var(--mist2);
+    text-transform: uppercase;
+    border: 1px solid var(--mist2);
+    padding: 4px 10px;
+}
+
+.proj-link {
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
+    color: var(--teal);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+}
+
+.proj-link:hover {
+    gap: 14px;
+}
+
+/* ── CONTATO ── */
+#contato {
+    padding: 100px 48px 120px;
+    position: relative;
+}
+
+.contato-inner {
+    max-width: 640px;
+}
+
+.contato-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.contato-title .teal {
+    color: var(--teal);
+}
+
+.contato-sub {
+    font-family: "Lora", serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mist);
+    line-height: 1.75;
+    margin-bottom: 48px;
+    max-width: 420px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 48px;
+}
+
+.contact-item {
+    background: var(--deep);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: all 0.25s;
+    border-left: 2px solid transparent;
+}
+
+.contact-item:hover {
+    background: var(--surface);
+    border-color: var(--teal);
+    padding-left: 36px;
+}
+
+.ci-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ci-icon {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    color: var(--teal);
+    flex-shrink: 0;
+}
+
+.ci-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
+    color: var(--mist2);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.ci-value {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+}
+
+.ci-arrow {
+    color: var(--teal);
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 0.8rem;
+}
+
+.contact-item:hover .ci-arrow {
+    opacity: 1;
+}
+
+/* FOOTER */
+footer {
+    position: relative;
+    z-index: 1;
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foot-logo {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+}
+
+.foot-logo .na {
+    color: var(--teal);
+}
+
+.foot-copy {
+    font-size: 0.48rem;
+    letter-spacing: 0.2em;
+    color: var(--mist2);
+    text-transform: uppercase;
+}
+
+/* ── TIMELINE (EXPERIÊNCIA) ── */
+#experiencia {
+    padding: 100px 48px;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 48px;
+    max-width: 820px;
+}
+
+.tl-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0 28px;
+}
+
+.tl-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tl-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(27, 228, 200, 0.15);
+    flex-shrink: 0;
+    margin-top: 4px;
+    transition: box-shadow 0.3s;
+}
+
+.tl-item:hover .tl-dot {
+    box-shadow: 0 0 0 8px rgba(27, 228, 200, 0.1);
+}
+
+.tl-line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--teal-dim), transparent);
+    margin-top: 8px;
+    min-height: 40px;
+}
+
+.tl-content {
+    padding-bottom: 52px;
+}
+
+.tl-company {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    line-height: 1.1;
+}
+
+.tl-period {
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-top: 4px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.tl-role-block {
+    background: var(--surface);
+    border-left: 2px solid var(--surface2);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.tl-role-block:hover {
+    border-color: var(--teal);
+}
+
+.tl-role {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.tl-role-period {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+}
+
+.tl-desc {
+    font-family: "Lora", serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mist);
+    line-height: 1.75;
+}
+
+.tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.tl-tag {
+    font-size: 0.46rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    border: 1px solid rgba(27, 228, 200, 0.25);
+    padding: 4px 10px;
+    background: rgba(27, 228, 200, 0.04);
+}
+
+/* ── FORMAÇÃO ACADÊMICA ── */
+#formacao {
+    padding: 100px 48px;
+    background: var(--deep);
+}
+
+.edu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 48px;
+    max-width: 820px;
+}
+
+.edu-card {
+    background: var(--surface);
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.edu-card:hover {
+    border-color: var(--teal);
+    background: var(--surface2);
+}
+
+.edu-card--highlight {
+    border-left-color: rgba(27, 228, 200, 0.3);
+}
+
+.edu-icon {
+    font-size: 1.3rem;
+    color: var(--teal);
+    flex-shrink: 0;
+    margin-top: 2px;
+    width: 28px;
+    text-align: center;
+    opacity: 0.85;
+}
+
+.edu-inst {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.edu-degree {
+    font-family: "Lora", serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mist);
+    margin-bottom: 6px;
+}
+
+.edu-period {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+    opacity: 0.75;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.edu-badge {
+    font-size: 0.44rem;
+    letter-spacing: 0.2em;
+    padding: 3px 10px;
+}
+
+.edu-badge--active {
+    background: rgba(27, 228, 200, 0.12);
+    color: var(--teal);
+    border: 1px solid rgba(27, 228, 200, 0.3);
+    animation: pulse 2s infinite;
+}
+
+/* ── CERTIFICAÇÕES ── */
+.certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+}
+
+.cert-item {
+    background: var(--surface);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.25s;
+}
+
+.cert-item:hover {
+    background: var(--surface2);
+    border-color: var(--teal);
+    transform: translateY(-3px);
+}
+
+.cert-icon {
+    font-size: 1.6rem;
+    color: var(--teal);
+    opacity: 0.85;
+    transition: transform 0.25s;
+}
+
+.cert-item:hover .cert-icon {
+    transform: scale(1.15);
+}
+
+.cert-name {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.4;
+}
+
+.cert-issuer {
+    font-family: "Lora", serif;
+    font-size: 0.72rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mist);
+}
+
+/* DIVIDER */
+.divider {
+    position: relative;
+    z-index: 1;
+    height: 1px;
+    background: linear-gradient(to right,
+            transparent,
+            var(--teal-dim),
+            transparent);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    nav {
+        padding: 16px 24px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    #hero,
+    #sobre,
+    #stack,
+    #projetos,
+    #contato {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    footer {
+        padding: 24px;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    /* Cursor personalizado desativado em telas pequenas */
+    body {
+        cursor: auto;
+    }
+
+    .cursor,
+    .cursor-ring {
+        display: none;
+    }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
