@@ -85,23 +85,6 @@ cd portifolio
 
 ---
 
-## Design System
-
-Este portfólio implementa o **Nevalo Design System** — um sistema proprietário de tokens e componentes que garante a consistência visual da marca.
-
-**Tokens utilizados neste projeto:**
-
-| Token | Valor | Uso |
-|---|---|---|
-| `--teal` | `#1BE4C8` | Acento principal, links, destaque |
-| `--gold` | `#D4A853` | Acento dourado, animações |
-| `--ink` | `#03080F` | Background base |
-| `Bebas Neue` | Display font | Títulos, hero, marca |
-| `Lora` | Body font | Texto descritivo |
-| `DM Mono` | Mono font | Labels, tags, UI |
-
----
-
 ## Status
 
 ```
