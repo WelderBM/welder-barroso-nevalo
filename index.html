@@ -14,6 +14,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <!-- Globe.gl (Stable Version) -->
+    <script src="https://unpkg.com/globe.gl@2.26.12/dist/globe.gl.min.js"></script>
   </head>
   <body>
     <div class="cursor" id="cursor"></div>
@@ -55,20 +57,23 @@
 
     <!-- HERO -->
     <section id="hero">
-      <div class="hero-eyebrow">× Frontend Developer × Software Engineer ×</div>
-      <h1 class="hero-name">
-        <span class="first">Welder</span>
-        <span class="last">Barroso</span>
-      </h1>
-      <div class="hero-role">Flow through every connection</div>
-      <p class="hero-desc">
-        Desenvolvedor frontend baseado em <em>Roraima, Brasil</em> — criando
-        interfaces que conectam pessoas e sistemas com
-        <em>fluidez e propósito.</em>
-      </p>
-      <div class="hero-ctas">
-        <a href="#projetos" class="btn btn-primary">Ver Projetos →</a>
-        <a href="#contato" class="btn btn-ghost">Falar Comigo</a>
+      <div id="globe-container"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">× De Roraima, para o mundo ×</div>
+        <h1 class="hero-name">
+          <span class="first">Welder</span>
+          <span class="last">Barroso</span>
+        </h1>
+        <div class="hero-role">Flow through every connection</div>
+        <p class="hero-desc">
+          Desenvolvedor frontend baseado em <em>Roraima, Brasil</em> — criando
+          interfaces que conectam pessoas e sistemas com
+          <em>fluidez e propósito.</em>
+        </p>
+        <div class="hero-ctas">
+          <a href="#projetos" class="btn btn-primary">Ver Projetos →</a>
+          <a href="#contato" class="btn btn-ghost">Falar Comigo</a>
+        </div>
       </div>
       <div class="hero-scroll">Scroll para explorar</div>
     </section>
@@ -178,7 +183,8 @@
           <div class="proj-type">Web App · Full Stack</div>
           <div class="proj-title">Mix Webapp</div>
           <p class="proj-desc">
-            Plataforma E-commerce Full Stack com engine de customização para presentes e decoração.
+            Plataforma E-commerce Full Stack com engine de customização para
+            presentes e decoração.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">Next.js</span>
@@ -198,7 +204,8 @@
           <div class="proj-type">Web · Freelance</div>
           <div class="proj-title">JL Skull Barber</div>
           <p class="proj-desc">
-            Sistema de agendamento online com painel administrativo integrado ao Firebase Firestore.
+            Sistema de agendamento online com painel administrativo integrado ao
+            Firebase Firestore.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">Vanilla JS</span>
@@ -218,7 +225,8 @@
           <div class="proj-type">Web · Personal</div>
           <div class="proj-title">simpleRifa</div>
           <p class="proj-desc">
-            Solução prática de arrecadação beneficente criada para apoiar causas familiares através da tecnologia.
+            Solução prática de arrecadação beneficente criada para apoiar causas
+            familiares através da tecnologia.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">JavaScript</span>
@@ -235,24 +243,11 @@
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">UI · Design System</div>
-          <div class="proj-title">Nevalo DS</div>
-          <p class="proj-desc">
-            O núcleo visual e técnico da Nevalo. Tokens CSS, componentes e tipografia consistente.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">CSS Puro</span>
-            <span class="proj-tag">Figma</span>
-            <span class="proj-tag">Tokens</span>
-          </div>
-
-        </div>
-
-        <div class="proj reveal">
           <div class="proj-type">Web · Interface</div>
           <div class="proj-title">Netflix Clone — iTeam</div>
           <p class="proj-desc">
-            Recriação fiel da interface Netflix com sistema de drag-to-scroll e header dinâmico.
+            Recriação fiel da interface Netflix com sistema de drag-to-scroll e
+            header dinâmico.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">Vanilla JS</span>
@@ -272,7 +267,8 @@
           <div class="proj-type">App · React</div>
           <div class="proj-title">Instagram App</div>
           <p class="proj-desc">
-             Clone moderno com alternância de temas Light/Dark e consumo de API de imagens.
+            Clone moderno com alternância de temas Light/Dark e consumo de API
+            de imagens.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">React</span>
@@ -292,7 +288,8 @@
           <div class="proj-type">Mobile · React Native</div>
           <div class="proj-title">Pigz Challenge</div>
           <p class="proj-desc">
-            App móvel para logística com dashboard de ganhos e gestão de entregas em tempo real.
+            App móvel para logística com dashboard de ganhos e gestão de
+            entregas em tempo real.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">React Native</span>
@@ -312,7 +309,8 @@
           <div class="proj-type">App · Weather</div>
           <div class="proj-title">Weather Forecast</div>
           <p class="proj-desc">
-            Previsão do tempo detalhada com dados de geolocalização e projeção para 5 dias.
+            Previsão do tempo detalhada com dados de geolocalização e projeção
+            para 5 dias.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">React</span>
@@ -332,7 +330,8 @@
           <div class="proj-type">UI · Desafio</div>
           <div class="proj-title">Photography Login</div>
           <p class="proj-desc">
-            Interface temática imersiva para estúdios fotográficos focada em tipografia e contrastes.
+            Interface temática imersiva para estúdios fotográficos focada em
+            tipografia e contrastes.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">React</span>
