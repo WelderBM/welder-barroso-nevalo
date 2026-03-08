@@ -16,8 +16,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <!-- Globe.gl — only loaded on desktop via JS check -->
-    <script defer src="https://unpkg.com/globe.gl@2.26.12/dist/globe.gl.min.js"></script>
+    <!-- Globe.gl loaded at body-end to guarantee it runs before scripts.js -->
   </head>
   <body>
     <!-- PRELOADER -->
@@ -946,6 +945,8 @@
         © 2026 Welder Barroso · Feito com fluxo e propósito
       </div>
     </footer>
+    <!-- Globe.gl must be loaded before scripts.js so Globe global is available -->
+    <script src="https://unpkg.com/globe.gl@2.26.12/dist/globe.gl.min.js"></script>
     <script src="./scripts.js"></script>
   </body>
 </html>
