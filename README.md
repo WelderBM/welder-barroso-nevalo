@@ -10,7 +10,7 @@
 ![Versão](https://img.shields.io/badge/versão-1.0.0-1be4c8?style=flat-square&labelColor=03080f&color=1be4c8)
 ![Licença](https://img.shields.io/badge/licença-MIT-d4a853?style=flat-square&labelColor=03080f&color=d4a853)
 
-[![Demo](https://img.shields.io/badge/▶%20ver%20demo-online-1be4c8?style=for-the-badge&labelColor=03080f&color=1be4c8)](https://nevalo.dev)
+[![Demo](https://img.shields.io/badge/▶%20ver%20demo-online-1be4c8?style=for-the-badge&labelColor=03080f&color=1be4c8)](https://welderbarroso.dev)
 
 <br/>
 
@@ -125,7 +125,7 @@ Este portfólio implementa o **Nevalo Design System** — veja o repositório [`
 
 Desenvolvido por **Welder Barroso de Melo**
 
-[![Nevalo](https://img.shields.io/badge/Nevalo-flow%20through%20every%20connection-1be4c8?style=for-the-badge&labelColor=03080f)](https://nevalo.dev)
+[![Nevalo](https://img.shields.io/badge/Nevalo-flow%20through%20every%20connection-1be4c8?style=for-the-badge&labelColor=03080f)](https://welderbarroso.dev)
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Welder%20Barroso-0a66c2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/welder-barroso-37b654207)
 [![GitHub](https://img.shields.io/badge/GitHub-WelderBM-f0f4f8?style=flat-square&logo=github&logoColor=03080f)](https://github.com/WelderBM)
@@ -137,7 +137,7 @@ Desenvolvido por **Welder Barroso de Melo**
 ---
 
 <div align="center">
-<sub>Feito com foco e café · <a href="https://nevalo.dev">nevalo.dev</a></sub>
+<sub>Feito com foco e café · <a href="https://welderbarroso.dev">welderbarroso.dev</a></sub>
 </div>
 
 ---
@@ -161,7 +161,7 @@ Desenvolvido por **Welder Barroso de Melo**
 ![Version](https://img.shields.io/badge/version-1.0.0-1be4c8?style=flat-square&labelColor=03080f&color=1be4c8)
 ![License](https://img.shields.io/badge/license-MIT-d4a853?style=flat-square&labelColor=03080f&color=d4a853)
 
-[![Demo](https://img.shields.io/badge/▶%20live%20demo-online-1be4c8?style=for-the-badge&labelColor=03080f&color=1be4c8)](https://nevalo.dev)
+[![Demo](https://img.shields.io/badge/▶%20live%20demo-online-1be4c8?style=for-the-badge&labelColor=03080f&color=1be4c8)](https://welderbarroso.dev)
 
 </div>
 
@@ -258,7 +258,7 @@ This portfolio implements the **Nevalo Design System** — see the [`design-syst
 
 Built by **Welder Barroso de Melo**
 
-[![Nevalo](https://img.shields.io/badge/Nevalo-flow%20through%20every%20connection-1be4c8?style=for-the-badge&labelColor=03080f)](https://nevalo.dev)
+[![Nevalo](https://img.shields.io/badge/Nevalo-flow%20through%20every%20connection-1be4c8?style=for-the-badge&labelColor=03080f)](https://welderbarroso.dev)
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Welder%20Barroso-0a66c2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/welder-barroso-37b654207)
 [![GitHub](https://img.shields.io/badge/GitHub-WelderBM-f0f4f8?style=flat-square&logo=github&logoColor=03080f)](https://github.com/WelderBM)
@@ -270,5 +270,5 @@ Built by **Welder Barroso de Melo**
 ---
 
 <div align="center">
-<sub>Built with focus and coffee · <a href="https://nevalo.dev">nevalo.dev</a></sub>
+<sub>Built with focus and coffee · <a href="https://welderbarroso.dev">welderbarroso.dev</a></sub>
 </div>
