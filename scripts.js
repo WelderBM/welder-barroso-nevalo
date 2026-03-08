@@ -1,32 +1,41 @@
 
-// Cursor
+// ── DEVICE DETECTION ──
+const isMobile = window.matchMedia('(max-width: 900px)').matches || ('ontouchstart' in window);
+
+// Cursor — disabled on touch devices
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
 
-document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-});
-
-function animRing() {
-    rx += (mx - rx) * .12; ry += (my - ry) * .12;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(animRing);
-} animRing();
-
-document.querySelectorAll('a,.btn,.proj,.tech,.stat,.contact-item').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
-        cursor.style.background = 'rgba(27,228,200,0.4)';
-        ring.style.width = '48px'; ring.style.height = '48px';
+if (isMobile) {
+    if (cursor) cursor.style.display = 'none';
+    if (ring) ring.style.display = 'none';
+} else {
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
     });
-    el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-        cursor.style.background = 'var(--teal)';
-        ring.style.width = '32px'; ring.style.height = '32px';
+    function animRing() {
+        rx += (mx - rx) * .12; ry += (my - ry) * .12;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(animRing);
+    } animRing();
+
+    document.querySelectorAll('a,.btn,.proj,.tech,.stat,.contact-item').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
+            cursor.style.background = 'rgba(27,228,200,0.4)';
+            ring.style.width = '48px'; ring.style.height = '48px';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+            cursor.style.background = 'var(--teal)';
+            ring.style.width = '32px'; ring.style.height = '32px';
+        });
     });
-});
+}
+
+// Flip animation state tracking (desktop only)
 
 // Flip animation state tracking
 document.querySelectorAll('.proj').forEach(proj => {
@@ -40,14 +49,19 @@ document.querySelectorAll('.proj').forEach(proj => {
     });
 });
 
-// Background canvas
+// Background canvas — throttled & paused when hidden
 const canvas = document.getElementById('bg');
 if (canvas) {
+    // On mobile: reduce to 20 pts and skip waves to save GPU
+    const NUM_PTS = isMobile ? 20 : 55;
+    const WAVE_COUNT = isMobile ? 0 : 4;
+    const STEP = isMobile ? 8 : 3; // larger step = fewer lineTo calls
+
     const ctx = canvas.getContext('2d');
     function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
     resize(); window.addEventListener('resize', resize);
 
-    const pts = Array.from({ length: 55 }, () => ({
+    const pts = Array.from({ length: NUM_PTS }, () => ({
         x: Math.random() * innerWidth,
         y: Math.random() * innerHeight,
         vx: (Math.random() - .5) * .22,
@@ -55,16 +69,20 @@ if (canvas) {
     }));
 
     let t = 0;
+    let rafId = null;
+    let isPageVisible = true;
+
     function draw() {
+        if (!isPageVisible) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         t += .003;
 
-        // waves
-        for (let w = 0; w < 4; w++) {
+        // waves (desktop only)
+        for (let w = 0; w < WAVE_COUNT; w++) {
             ctx.beginPath();
             const yb = (canvas.height / 5) * (w + 1);
             ctx.moveTo(0, yb);
-            for (let x = 0; x <= canvas.width; x += 3) {
+            for (let x = 0; x <= canvas.width; x += STEP) {
                 const y = yb + Math.sin(x * .007 + t + w) * 16 + Math.sin(x * .014 + t * 1.2 + w * 2) * 7;
                 ctx.lineTo(x, y);
             }
@@ -78,15 +96,16 @@ if (canvas) {
             if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
             if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
         });
+        const CONNECT_DIST = isMobile ? 70 : 90;
         for (let i = 0; i < pts.length; i++) {
             for (let j = i + 1; j < pts.length; j++) {
                 const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
                 const d = Math.sqrt(dx * dx + dy * dy);
-                if (d < 90) {
+                if (d < CONNECT_DIST) {
                     ctx.beginPath();
                     ctx.moveTo(pts[i].x, pts[i].y);
                     ctx.lineTo(pts[j].x, pts[j].y);
-                    ctx.strokeStyle = `rgba(168,216,234,${.03 * (1 - d / 90)})`;
+                    ctx.strokeStyle = `rgba(168,216,234,${.03 * (1 - d / CONNECT_DIST)})`;
                     ctx.lineWidth = .5; ctx.stroke();
                 }
             }
@@ -94,8 +113,21 @@ if (canvas) {
             ctx.arc(pts[i].x, pts[i].y, 1, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(27,228,200,0.12)'; ctx.fill();
         }
-        requestAnimationFrame(draw);
-    } draw();
+        rafId = requestAnimationFrame(draw);
+    }
+
+    // Pause canvas when tab is hidden — saves significant battery/CPU
+    document.addEventListener('visibilitychange', () => {
+        isPageVisible = !document.hidden;
+        if (isPageVisible && !rafId) {
+            rafId = requestAnimationFrame(draw);
+        } else if (!isPageVisible && rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+    });
+
+    rafId = requestAnimationFrame(draw);
 }
 
 // Scroll reveal
@@ -106,10 +138,10 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: .1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ── GLOBE ──
+// ── GLOBE — disabled on mobile (too heavy for WebGL on phones) ──
 const globeContainer = document.getElementById('globe-container');
 
-if (globeContainer) {
+if (globeContainer && !isMobile) {
     const roraimaCoords = { lat: 2.73, lng: -61.32 };
 
     const myGlobe = Globe()(globeContainer)
@@ -203,36 +235,70 @@ if (globeContainer) {
     });
 }
 
-// ── MOCKUPS SCALING ──
+// ── MOCKUPS: Click-to-load iframes (saves heavy network load on mobile) ──
+function setupLazyIframe(containerSelector, iframeSelector, src) {
+    const container = document.querySelector(containerSelector);
+    const placeholder = document.querySelector(containerSelector + ' .iframe-placeholder');
+    if (!container || !placeholder) return;
+
+    placeholder.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.className = iframeSelector.replace('.', '');
+        iframe.title = 'Preview';
+        iframe.style.cssText = 'border:0;width:100%;height:100%;';
+        placeholder.replaceWith(iframe);
+        if (iframeSelector === '.iframe-pc') {
+            const pcScreen = document.querySelector('.mockup-pc .mockup-screen');
+            requestAnimationFrame(() => scaleMockup(pcScreen, iframe, 1440));
+        } else {
+            const mobileScreen = document.querySelector('.mockup-mobile .mockup-screen');
+            requestAnimationFrame(() => scaleMockup(mobileScreen, iframe, 375));
+        }
+    }, { once: true });
+}
+
+function scaleMockup(screen, iframe, baseW) {
+    if (!screen || !iframe) return;
+    const scale = screen.offsetWidth / baseW;
+    iframe.style.transform = `scale(${scale})`;
+    iframe.style.transformOrigin = 'top left';
+    iframe.style.width = baseW + 'px';
+    iframe.style.height = (screen.offsetHeight / scale) + 'px';
+}
+
 function scaleMockups() {
     const pcScreen = document.querySelector('.mockup-pc .mockup-screen');
     const iframePc = document.querySelector('.iframe-pc');
-    if(pcScreen && iframePc) {
-        const scale = pcScreen.offsetWidth / 1440;
-        iframePc.style.transform = `scale(${scale})`;
-    }
-    
+    if(pcScreen && iframePc) scaleMockup(pcScreen, iframePc, 1440);
+
     const mobileScreen = document.querySelector('.mockup-mobile .mockup-screen');
     const iframeMobile = document.querySelector('.iframe-mobile');
-    if(mobileScreen && iframeMobile) {
-        const scale = mobileScreen.offsetWidth / 375;
-        iframeMobile.style.transform = `scale(${scale})`;
-    }
+    if(mobileScreen && iframeMobile) scaleMockup(mobileScreen, iframeMobile, 375);
 }
+
+setupLazyIframe('.mockup-pc .mockup-screen', '.iframe-pc', 'https://iteamflix-clone.netlify.app/');
+setupLazyIframe('.mockup-mobile .mockup-screen', '.iframe-mobile', 'https://iteamflix-clone.netlify.app/');
+
 window.addEventListener('resize', scaleMockups);
-// Init scaling once safely to avoid 0px reads due to DOM layout
-requestAnimationFrame(() => {
-    scaleMockups();
-    setTimeout(scaleMockups, 300);
-});
+
+// ── FIGMA LAZY EMBED ──
+function loadFigmaEmbed(el) {
+    const iframe = document.createElement('iframe');
+    iframe.style.cssText = 'border:1px solid rgba(255,255,255,0.1);width:100%;height:300px;border-radius:4px;';
+    iframe.src = 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmWYMKBdUzfSgyZQEpxrGvw%2FNetflix-Clone--Community-%3Fnode-id%3D0-1&scaling=min-zoom&hide-ui=1';
+    iframe.setAttribute('allowfullscreen', '');
+    el.replaceWith(iframe);
+}
 
 // ── PRELOADER ──
 window.addEventListener('load', () => {
-    // Adiciona um pequeno delay para garantir que os scripts pesados (como ThreeJs / Globe) iniciem sua renderização
+    // Delay menor no mobile (globo não carrega, fica mais rápido)
+    const delay = isMobile ? 600 : 1200;
     setTimeout(() => {
         const loader = document.getElementById('global-loader');
         if (loader) {
             loader.classList.add('hide');
         }
-    }, 1200);
+    }, delay);
 });

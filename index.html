@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welder Barroso — Nevalo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lora:ital,wght@0,300;0,400;1,300;1,400&display=swap"
       rel="stylesheet"
@@ -14,8 +16,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <!-- Globe.gl (Stable Version) -->
-    <script src="https://unpkg.com/globe.gl@2.26.12/dist/globe.gl.min.js"></script>
+    <!-- Globe.gl — only loaded on desktop via JS check -->
+    <script defer src="https://unpkg.com/globe.gl@2.26.12/dist/globe.gl.min.js"></script>
   </head>
   <body>
     <!-- PRELOADER -->
@@ -214,6 +216,7 @@
                 <img
                   src="assets/ecommerce-print.png"
                   alt="Preview do Mix Webapp"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -249,6 +252,7 @@
                 <img
                   src="assets/baber-print.png"
                   alt="Preview do JL Skull Barber"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -284,6 +288,7 @@
                 <img
                   src="assets/rifa-print.png"
                   alt="Preview do simpleRifa"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -326,6 +331,7 @@
                 <img
                   src="assets/netflix-print.png"
                   alt="Preview do Netflix Clone"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -361,6 +367,7 @@
                 <img
                   src="assets/instagram-print.png"
                   alt="Preview do Instagram App"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -396,6 +403,7 @@
                 <img
                   src="assets/pigz-test-print.png"
                   alt="Preview do Pigz Challenge"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -431,6 +439,7 @@
                 <img
                   src="assets/previsao-temp-print.png"
                   alt="Preview do Weather Forecast"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -466,6 +475,7 @@
                 <img
                   src="assets/login-test-print.png"
                   alt="Preview do Photography Login"
+                  loading="lazy"
                   style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
                 />
                 <a
@@ -504,14 +514,11 @@
             <div class="proto-label">
               <i class="fa-brands fa-figma"></i> Protótipo Original
             </div>
-            <!-- Pode ser substituido por um GIF depois -->
-            <iframe
-              style="border: 1px solid rgba(255, 255, 255, 0.1)"
-              width="100%"
-              height="300"
-              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmWYMKBdUzfSgyZQEpxrGvw%2FNetflix-Clone--Community-%3Fnode-id%3D0-1&scaling=min-zoom&hide-ui=1"
-              allowfullscreen
-            ></iframe>
+            <!-- Placeholder clicável — iframe carrega só quando necessário -->
+            <div class="iframe-placeholder figma-placeholder" onclick="loadFigmaEmbed(this)" role="button" tabindex="0" aria-label="Carregar protótipo do Figma">
+              <i class="fa-brands fa-figma" style="font-size:2rem;color:var(--teal);margin-bottom:12px;"></i>
+              <span>Clique para carregar o Figma</span>
+            </div>
           </div>
           <a
             href="https://iteamflix-clone.netlify.app"
@@ -530,11 +537,10 @@
               <div class="mockup-dot green"></div>
             </div>
             <div class="mockup-screen">
-              <iframe
-                src="https://iteamflix-clone.netlify.app/"
-                class="iframe-pc"
-                title="Netflix PC"
-              ></iframe>
+              <div class="iframe-placeholder" role="button" tabindex="0" aria-label="Clique para carregar preview">
+                <i class="fa-solid fa-play-circle" style="font-size:2rem;color:var(--teal);margin-bottom:8px;"></i>
+                <span>Clique para carregar</span>
+              </div>
             </div>
             <div class="mockup-pc-stand"></div>
             <div class="mockup-pc-base"></div>
@@ -544,11 +550,10 @@
           <div class="mockup-mobile">
             <div class="mockup-mobile-speaker"></div>
             <div class="mockup-screen">
-              <iframe
-                src="https://iteamflix-clone.netlify.app/"
-                class="iframe-mobile"
-                title="Netflix Mobile"
-              ></iframe>
+              <div class="iframe-placeholder" role="button" tabindex="0" aria-label="Clique para carregar preview mobile">
+                <i class="fa-solid fa-play-circle" style="font-size:1.5rem;color:var(--teal);margin-bottom:6px;"></i>
+                <span>Clique</span>
+              </div>
             </div>
           </div>
         </div>
