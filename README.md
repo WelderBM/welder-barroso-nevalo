@@ -112,9 +112,9 @@ Este portfólio implementa o **Nevalo Design System** — um sistema proprietár
 
 ### Próximos passos
 
-- [ ] Adicionar projetos recentes (JL Skull Barber, Mix Webapp)
+- [x] Adicionar projetos recentes (Mix Webapp, JL Skull Barber, simpleRifa)
 - [ ] Seção de blog/artigos técnicos
-- [ ] Internacionalização (PT-BR / EN)
+- [ ] Internacionalização completa do index.html (PT-BR / EN)
 - [ ] Modo de acessibilidade com contraste reduzido
 
 ---
