@@ -87,7 +87,7 @@ cd portifolio
 
 ## Design System
 
-Este portfólio implementa o **Nevalo Design System** — veja o repositório [`design-system`](https://github.com/WelderBM/design-system) para os tokens completos.
+Este portfólio implementa o **Nevalo Design System** — um sistema proprietário de tokens e componentes que garante a consistência visual da marca.
 
 **Tokens utilizados neste projeto:**
 
@@ -236,7 +236,7 @@ Open `index.html` in your browser — or use Live Server for a better dev experi
 
 ## Design System
 
-This portfolio implements the **Nevalo Design System** — see the [`design-system`](https://github.com/WelderBM/design-system) repository for the full tokens reference.
+This portfolio implements the **Nevalo Design System** — a proprietary token and component system that ensures brand visual consistency.
 
 ---
 
