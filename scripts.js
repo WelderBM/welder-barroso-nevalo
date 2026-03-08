@@ -28,6 +28,18 @@ document.querySelectorAll('a,.btn,.proj,.tech,.stat,.contact-item').forEach(el =
     });
 });
 
+// Flip animation state tracking
+document.querySelectorAll('.proj').forEach(proj => {
+    proj.addEventListener('mouseenter', () => {
+        proj.classList.add('is-flipping-front');
+        proj.classList.remove('is-flipping-back');
+    });
+    proj.addEventListener('mouseleave', () => {
+        proj.classList.add('is-flipping-back');
+        proj.classList.remove('is-flipping-front');
+    });
+});
+
 // Background canvas
 const canvas = document.getElementById('bg');
 if (canvas) {
@@ -109,10 +121,10 @@ if (globeContainer) {
         .pointOfView({ ...roraimaCoords, altitude: 2 }, 0);
 
     // Interaction
-    myGlobe.controls().autoRotate = true;
-    myGlobe.controls().autoRotateSpeed = 0.2;
+    myGlobe.controls().autoRotate = false; // Mantém a posição inicial (Roraima)
     myGlobe.controls().enableZoom = false; // Rigidly disable scroll zoom
     myGlobe.controls().enablePan = false;
+    myGlobe.controls().enableRotate = false; // Desabilita o drag (rotação manual)
 
     // Load Data
     const WORLD_URL = 'https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson';
@@ -212,4 +224,15 @@ window.addEventListener('resize', scaleMockups);
 requestAnimationFrame(() => {
     scaleMockups();
     setTimeout(scaleMockups, 300);
+});
+
+// ── PRELOADER ──
+window.addEventListener('load', () => {
+    // Adiciona um pequeno delay para garantir que os scripts pesados (como ThreeJs / Globe) iniciem sua renderização
+    setTimeout(() => {
+        const loader = document.getElementById('global-loader');
+        if (loader) {
+            loader.classList.add('hide');
+        }
+    }, 1200);
 });

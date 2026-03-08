@@ -18,10 +18,24 @@
     <script src="https://unpkg.com/globe.gl@2.26.12/dist/globe.gl.min.js"></script>
   </head>
   <body>
+    <!-- PRELOADER -->
+    <div id="global-loader">
+      <div class="gl-hex">
+        <svg viewBox="0 0 100 100" class="hex-svg">
+          <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" />
+        </svg>
+        <div class="gl-core"></div>
+      </div>
+      <div class="gl-text">
+        <div class="gl-title">NEVALO_SYS</div>
+        <div class="gl-subtitle">Carregando scripts e ambiente gŕafico</div>
+      </div>
+      <div class="gl-progress-bar"></div>
+    </div>
+
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
     <canvas id="bg"></canvas>
-
     <!-- NAV -->
     <nav>
       <a href="#hero" class="nav-logo">
@@ -181,171 +195,290 @@
       </div>
       <div class="projects-grid">
         <div class="proj reveal">
-          <div class="proj-type">Web App · Full Stack</div>
-          <div class="proj-title">Mix Webapp</div>
-          <p class="proj-desc">
-            Plataforma E-commerce Full Stack com engine de customização para
-            presentes e decoração.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">Next.js</span>
-            <span class="proj-tag">Firebase</span>
-            <span class="proj-tag">Zustand</span>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">Web App · Full Stack</div>
+              <div class="proj-title">Mix Webapp</div>
+              <p class="proj-desc">
+                Plataforma E-commerce Full Stack com engine de customização para
+                presentes e decoração.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">Next.js</span>
+                <span class="proj-tag">Firebase</span>
+                <span class="proj-tag">Zustand</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/ecommerce-print.png"
+                  alt="Preview do Mix Webapp"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/mix-webapp"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/WelderBM/mix-webapp"
-            target="_blank"
-            class="proj-link"
-          >
-            Ver no GitHub →
-          </a>
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">Web · Freelance</div>
-          <div class="proj-title">JL Skull Barber</div>
-          <p class="proj-desc">
-            Sistema de agendamento online com painel administrativo integrado ao
-            Firebase Firestore.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">Vanilla JS</span>
-            <span class="proj-tag">Firebase</span>
-            <span class="proj-tag">UI Design</span>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">Web · Freelance</div>
+              <div class="proj-title">JL Skull Barber</div>
+              <p class="proj-desc">
+                Sistema de agendamento online com painel administrativo
+                integrado ao Firebase Firestore.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">Vanilla JS</span>
+                <span class="proj-tag">Firebase</span>
+                <span class="proj-tag">UI Design</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/baber-print.png"
+                  alt="Preview do JL Skull Barber"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/jl_skull_barber_site"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/WelderBM/jl_skull_barber_site"
-            target="_blank"
-            class="proj-link"
-          >
-            Ver no GitHub →
-          </a>
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">Web · Personal</div>
-          <div class="proj-title">simpleRifa</div>
-          <p class="proj-desc">
-            Solução prática de arrecadação beneficente criada para apoiar causas
-            familiares através da tecnologia.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">JavaScript</span>
-            <span class="proj-tag">Firebase</span>
-            <span class="proj-tag">Real-time</span>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">Web · Personal</div>
+              <div class="proj-title">simpleRifa</div>
+              <p class="proj-desc">
+                Solução prática de arrecadação beneficente criada para apoiar
+                causas familiares através da tecnologia.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">JavaScript</span>
+                <span class="proj-tag">Firebase</span>
+                <span class="proj-tag">Real-time</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/rifa-print.png"
+                  alt="Preview do simpleRifa"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/simpleRifa"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/WelderBM/simpleRifa"
-            target="_blank"
-            class="proj-link"
-          >
-            Ver no GitHub →
-          </a>
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">Web · Interface</div>
-          <div class="proj-title">Netflix Clone — iTeam</div>
-          <p class="proj-desc">
-            Recriação fiel da interface Netflix com sistema de drag-to-scroll e
-            header dinâmico.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">Vanilla JS</span>
-            <span class="proj-tag">CSS3</span>
-            <span class="proj-tag">DOM</span>
-          </div>
           <a
-            href="https://github.com/WelderBM/netflix-clone-iteam"
-            target="_blank"
-            class="proj-link"
+            href="#prototipagem"
+            class="proto-star-alert"
+            data-tooltip="Ir para a Prototipagem!"
           >
-            Ver no GitHub →
+            <i class="fa-solid fa-star"></i>
           </a>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">Web · Interface</div>
+              <div class="proj-title">Netflix Clone — iTeam</div>
+              <p class="proj-desc">
+                Recriação fiel da interface Netflix com sistema de
+                drag-to-scroll e header dinâmico.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">Vanilla JS</span>
+                <span class="proj-tag">CSS3</span>
+                <span class="proj-tag">DOM</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/netflix-print.png"
+                  alt="Preview do Netflix Clone"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/netflix-clone-iteam"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">App · React</div>
-          <div class="proj-title">Instagram App</div>
-          <p class="proj-desc">
-            Clone moderno com alternância de temas Light/Dark e consumo de API
-            de imagens.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">React</span>
-            <span class="proj-tag">Vite</span>
-            <span class="proj-tag">API</span>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">App · React</div>
+              <div class="proj-title">Instagram App</div>
+              <p class="proj-desc">
+                Clone moderno com alternância de temas Light/Dark e consumo de
+                API de imagens.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">React</span>
+                <span class="proj-tag">Vite</span>
+                <span class="proj-tag">API</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/instagram-print.png"
+                  alt="Preview do Instagram App"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/instagram-app"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/WelderBM/instagram-app"
-            target="_blank"
-            class="proj-link"
-          >
-            Ver no GitHub →
-          </a>
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">Mobile · React Native</div>
-          <div class="proj-title">Pigz Challenge</div>
-          <p class="proj-desc">
-            App móvel para logística com dashboard de ganhos e gestão de
-            entregas em tempo real.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">React Native</span>
-            <span class="proj-tag">TS</span>
-            <span class="proj-tag">Logística</span>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">Mobile · React Native</div>
+              <div class="proj-title">Pigz Challenge</div>
+              <p class="proj-desc">
+                App móvel para logística com dashboard de ganhos e gestão de
+                entregas em tempo real.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">React Native</span>
+                <span class="proj-tag">TS</span>
+                <span class="proj-tag">Logística</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/pigz-test-print.png"
+                  alt="Preview do Pigz Challenge"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/pigzchallenge"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/WelderBM/pigzchallenge"
-            target="_blank"
-            class="proj-link"
-          >
-            Ver no GitHub →
-          </a>
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">App · Weather</div>
-          <div class="proj-title">Weather Forecast</div>
-          <p class="proj-desc">
-            Previsão do tempo detalhada com dados de geolocalização e projeção
-            para 5 dias.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">React</span>
-            <span class="proj-tag">Vite</span>
-            <span class="proj-tag">API</span>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">App · Weather</div>
+              <div class="proj-title">Weather Forecast</div>
+              <p class="proj-desc">
+                Previsão do tempo detalhada com dados de geolocalização e
+                projeção para 5 dias.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">React</span>
+                <span class="proj-tag">Vite</span>
+                <span class="proj-tag">API</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/previsao-temp-print.png"
+                  alt="Preview do Weather Forecast"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/weather-forecast"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/WelderBM/weather-forecast"
-            target="_blank"
-            class="proj-link"
-          >
-            Ver no GitHub →
-          </a>
         </div>
 
         <div class="proj reveal">
-          <div class="proj-type">UI · Desafio</div>
-          <div class="proj-title">Photography Login</div>
-          <p class="proj-desc">
-            Interface temática imersiva para estúdios fotográficos focada em
-            tipografia e contrastes.
-          </p>
-          <div class="proj-tags">
-            <span class="proj-tag">React</span>
-            <span class="proj-tag">CSS3</span>
-            <span class="proj-tag">UI Design</span>
+          <div class="proj-flip-inner">
+            <div class="proj-front">
+              <div class="proj-type">UI · Desafio</div>
+              <div class="proj-title">Photography Login</div>
+              <p class="proj-desc">
+                Interface temática imersiva para estúdios fotográficos focada em
+                tipografia e contrastes.
+              </p>
+              <div class="proj-tags">
+                <span class="proj-tag">React</span>
+                <span class="proj-tag">CSS3</span>
+                <span class="proj-tag">UI Design</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <div class="proj-media-placeholder">
+                <img
+                  src="assets/login-test-print.png"
+                  alt="Preview do Photography Login"
+                  style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: brightness(0.5);"
+                />
+                <a
+                  href="https://github.com/WelderBM/LoginPage-photography"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  style="position: relative; z-index: 10; margin-top: 16px"
+                >
+                  Ver no GitHub →
+                </a>
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/WelderBM/LoginPage-photography"
-            target="_blank"
-            class="proj-link"
-          >
-            Ver no GitHub →
-          </a>
         </div>
       </div>
     </section>
@@ -356,23 +489,36 @@
     <section id="prototipagem">
       <div class="sec-header reveal">
         <div class="sec-tag">Pixel Perfect</div>
-        <h2 class="sec-title">Prototipagem de<br>Alta Fidelidade</h2>
+        <h2 class="sec-title">Prototipagem de<br />Alta Fidelidade</h2>
       </div>
 
       <div class="proto-grid reveal">
-        
         <div class="proto-info">
           <p class="proto-desc">
-            Capacidade de transcrever designs complexos do <strong>Figma</strong> diretamente para a Web, respeitando as métricas, cores e micro-interações à risca. Cada detalhe do protótipo é mantido.
+            Capacidade de transcrever designs complexos do
+            <strong>Figma</strong> diretamente para a Web, respeitando as
+            métricas, cores e micro-interações à risca. Cada detalhe do
+            protótipo é mantido.
           </p>
           <div class="figma-embed-container">
             <div class="proto-label">
               <i class="fa-brands fa-figma"></i> Protótipo Original
             </div>
             <!-- Pode ser substituido por um GIF depois -->
-            <iframe style="border: 1px solid rgba(255,255,255,0.1);" width="100%" height="300" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmWYMKBdUzfSgyZQEpxrGvw%2FNetflix-Clone--Community-%3Fnode-id%3D0-1&scaling=min-zoom&hide-ui=1" allowfullscreen></iframe>
+            <iframe
+              style="border: 1px solid rgba(255, 255, 255, 0.1)"
+              width="100%"
+              height="300"
+              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmWYMKBdUzfSgyZQEpxrGvw%2FNetflix-Clone--Community-%3Fnode-id%3D0-1&scaling=min-zoom&hide-ui=1"
+              allowfullscreen
+            ></iframe>
           </div>
-          <a href="https://iteamflix-clone.netlify.app" target="_blank" class="btn btn-primary mt-4">Visitar Clone Ao Vivo →</a>
+          <a
+            href="https://iteamflix-clone.netlify.app"
+            target="_blank"
+            class="btn btn-primary mt-4"
+            >Visitar Clone Ao Vivo →</a
+          >
         </div>
 
         <div class="proto-mockups">
@@ -384,7 +530,11 @@
               <div class="mockup-dot green"></div>
             </div>
             <div class="mockup-screen">
-              <iframe src="https://iteamflix-clone.netlify.app/" class="iframe-pc" title="Netflix PC"></iframe>
+              <iframe
+                src="https://iteamflix-clone.netlify.app/"
+                class="iframe-pc"
+                title="Netflix PC"
+              ></iframe>
             </div>
             <div class="mockup-pc-stand"></div>
             <div class="mockup-pc-base"></div>
@@ -394,11 +544,14 @@
           <div class="mockup-mobile">
             <div class="mockup-mobile-speaker"></div>
             <div class="mockup-screen">
-               <iframe src="https://iteamflix-clone.netlify.app/" class="iframe-mobile" title="Netflix Mobile"></iframe>
+              <iframe
+                src="https://iteamflix-clone.netlify.app/"
+                class="iframe-mobile"
+                title="Netflix Mobile"
+              ></iframe>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -409,6 +562,86 @@
       <div class="sec-header reveal">
         <div class="sec-tag">Trajetória</div>
         <h2 class="sec-title">Experiência Profissional</h2>
+      </div>
+
+      <div class="resilience-block reveal">
+        <div class="resilience-art">
+          <svg
+            viewBox="0 0 200 200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                id="flowerGrad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stop-color="var(--teal)" />
+                <stop offset="100%" stop-color="var(--gold)" />
+              </linearGradient>
+            </defs>
+            <!-- Rocky Ground -->
+            <path
+              d="M10 160 Q 40 140, 70 155 T 130 145 T 190 155 L 190 190 L 10 190 Z"
+              fill="var(--surface)"
+            />
+            <path
+              d="M10 160 L 50 180 M130 145 L 110 190 M190 155 L 150 180"
+              stroke="var(--ink)"
+              stroke-width="4"
+            />
+            <path
+              d="M70 155 l 20 15 l 5 -10 l 15 20"
+              fill="none"
+              stroke="var(--ink)"
+              stroke-width="4"
+              stroke-linejoin="round"
+            />
+            <!-- Central Crack / Stem -->
+            <path
+              d="M100 150 C 90 120, 110 90, 100 60"
+              stroke="var(--teal)"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <path
+              d="M100 110 C 115 100, 115 85, 100 90"
+              fill="var(--teal-dim)"
+              stroke="var(--teal)"
+              stroke-width="1.5"
+            />
+            <path
+              d="M100 80 C 85 75, 85 60, 100 65"
+              fill="var(--teal-dim)"
+              stroke="var(--gold)"
+              stroke-width="1.5"
+            />
+            <!-- Flower Pattern (Apex) -->
+            <path
+              d="M100 60 C 120 40, 130 20, 100 30 C 70 20, 80 40, 100 60"
+              fill="url(#flowerGrad)"
+            />
+            <circle cx="100" cy="40" r="5" fill="#fff" />
+
+            <!-- Sparks -->
+            <circle cx="80" cy="20" r="2" fill="var(--teal)" opacity="0.8" />
+            <circle cx="125" cy="15" r="3" fill="var(--gold)" opacity="0.6" />
+            <circle cx="100" cy="10" r="1.5" fill="#fff" opacity="0.9" />
+            <circle cx="115" cy="50" r="1.5" fill="var(--teal)" opacity="0.5" />
+            <circle cx="85" cy="45" r="1.5" fill="var(--gold)" opacity="0.5" />
+          </svg>
+        </div>
+        <div class="resilience-text">
+          <p>
+            Nem toda jornada é contínua — e tudo bem. A minha me ensinou a
+            transformar pausa em perspectiva, e perspectiva em trabalho melhor.
+            Tenho a rara habilidade de me reinventar sem perder o fio de quem
+            sou.
+          </p>
+        </div>
       </div>
 
       <div class="timeline reveal">
