@@ -190,3 +190,26 @@ if (globeContainer) {
         myGlobe.width(w).height(h);
     });
 }
+
+// ── MOCKUPS SCALING ──
+function scaleMockups() {
+    const pcScreen = document.querySelector('.mockup-pc .mockup-screen');
+    const iframePc = document.querySelector('.iframe-pc');
+    if(pcScreen && iframePc) {
+        const scale = pcScreen.offsetWidth / 1440;
+        iframePc.style.transform = `scale(${scale})`;
+    }
+    
+    const mobileScreen = document.querySelector('.mockup-mobile .mockup-screen');
+    const iframeMobile = document.querySelector('.iframe-mobile');
+    if(mobileScreen && iframeMobile) {
+        const scale = mobileScreen.offsetWidth / 375;
+        iframeMobile.style.transform = `scale(${scale})`;
+    }
+}
+window.addEventListener('resize', scaleMockups);
+// Init scaling once safely to avoid 0px reads due to DOM layout
+requestAnimationFrame(() => {
+    scaleMockups();
+    setTimeout(scaleMockups, 300);
+});
