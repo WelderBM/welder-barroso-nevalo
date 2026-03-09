@@ -270,11 +270,11 @@ function scaleMockup(screen, iframe, baseW) {
 function scaleMockups() {
     const pcScreen = document.querySelector('.mockup-pc .mockup-screen');
     const iframePc = document.querySelector('.iframe-pc');
-    if(pcScreen && iframePc) scaleMockup(pcScreen, iframePc, 1440);
+    if (pcScreen && iframePc) scaleMockup(pcScreen, iframePc, 1440);
 
     const mobileScreen = document.querySelector('.mockup-mobile .mockup-screen');
     const iframeMobile = document.querySelector('.iframe-mobile');
-    if(mobileScreen && iframeMobile) scaleMockup(mobileScreen, iframeMobile, 375);
+    if (mobileScreen && iframeMobile) scaleMockup(mobileScreen, iframeMobile, 375);
 }
 
 setupLazyIframe('.mockup-pc .mockup-screen', '.iframe-pc', 'https://iteamflix-clone.netlify.app/');
@@ -302,3 +302,31 @@ window.addEventListener('load', () => {
         }
     }, delay);
 });
+
+// ── PARALLAX PROFILE IMAGE ──
+const parallaxImg = document.getElementById('parallax-img');
+const sobreSection = document.getElementById('sobre');
+
+if (parallaxImg && sobreSection && !isMobile) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const rect = sobreSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Atualiza o parallax apenas se a seção inteira estiver na tela (viewport intersect)
+                if (rect.top <= windowHeight && rect.bottom >= 0) {
+                    // O valor vai de mais ou menos 1 pra -1
+                    const progress = (rect.top - (windowHeight / 2)) / windowHeight;
+
+                    // Multiplicador negativo: a foto "afunda/desce" enquando a section sobe na tela.
+                    // Parallax bem lento: multiplicador pequeno (ex: -12), mascarando perfeitamente
+                    parallaxImg.style.transform = `translateY(${progress * -20}%)`;
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+}
