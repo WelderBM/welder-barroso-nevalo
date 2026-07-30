@@ -141,7 +141,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 // ── GLOBE — disabled on mobile (too heavy for WebGL on phones) ──
 const globeContainer = document.getElementById('globe-container');
 
-if (globeContainer && !isMobile) {
+function initGlobe() {
     const roraimaCoords = { lat: 2.73, lng: -61.32 };
 
     const myGlobe = Globe()(globeContainer)
@@ -235,6 +235,16 @@ if (globeContainer && !isMobile) {
     });
 }
 
+// Adia a criação do globo (WebGL/Three.js pesado) pro navegador ficar ocioso,
+// pra não competir com o main thread durante o carregamento crítico da página.
+if (globeContainer && !isMobile) {
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initGlobe, { timeout: 2000 });
+    } else {
+        setTimeout(initGlobe, 200);
+    }
+}
+
 // ── MOCKUPS: Click-to-load iframes (saves heavy network load on mobile) ──
 function setupLazyIframe(containerSelector, iframeSelector, src) {
     const container = document.querySelector(containerSelector);
@@ -287,6 +297,7 @@ function loadFigmaEmbed(el) {
     const iframe = document.createElement('iframe');
     iframe.style.cssText = 'border:1px solid rgba(255,255,255,0.1);width:100%;height:300px;border-radius:4px;';
     iframe.src = 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmWYMKBdUzfSgyZQEpxrGvw%2FNetflix-Clone--Community-%3Fnode-id%3D0-1&scaling=min-zoom&hide-ui=1';
+    iframe.title = 'Protótipo Figma — Netflix Clone';
     iframe.setAttribute('allowfullscreen', '');
     el.replaceWith(iframe);
 }
