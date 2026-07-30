@@ -5,8 +5,8 @@
     --surface: #0e1e34;
     --surface2: #142540;
     --teal: #1be4c8;
-    --teal-dim: rgba(27, 228, 200, 0.1);
-    --teal-glow: rgba(27, 228, 200, 0.05);
+    --teal-dim: color-mix(in srgb, var(--teal) 10%, transparent);
+    --teal-glow: color-mix(in srgb, var(--teal) 5%, transparent);
     --water: #a8d8ea;
     --gold: #d4a853;
     --white: #f0f4f8;
@@ -66,7 +66,7 @@ body {
     transition: background 0.25s;
     gap: 4px;
     user-select: none;
-    border: 1px dashed rgba(27, 228, 200, 0.2);
+    border: 1px dashed color-mix(in srgb, var(--teal) 20%, transparent);
 }
 
 .iframe-placeholder:hover {
@@ -85,7 +85,7 @@ body {
 .figma-placeholder {
     height: 300px;
     border-radius: 4px;
-    border: 1px dashed rgba(27, 228, 200, 0.2);
+    border: 1px dashed color-mix(in srgb, var(--teal) 20%, transparent);
 }
 
 /* ── PRELOADER ── */
@@ -265,7 +265,7 @@ body {
     position: fixed;
     width: 32px;
     height: 32px;
-    border: 1px solid rgba(27, 228, 200, 0.4);
+    border: 1px solid color-mix(in srgb, var(--teal) 40%, transparent);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
@@ -297,7 +297,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(to bottom,
-            rgba(3, 8, 15, 0.95),
+            color-mix(in srgb, var(--ink) 95%, transparent),
             transparent);
     backdrop-filter: blur(2px);
 }
@@ -375,7 +375,7 @@ section {
     z-index: 2;
     max-width: 700px;
     pointer-events: none;
-    text-shadow: 0 0 50px rgba(3, 8, 15, 1);
+    text-shadow: 0 0 50px var(--ink);
 }
 
 .hero-content>* {
@@ -409,7 +409,7 @@ section {
 .hero-name .last {
     display: block;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(27, 228, 200, 0.4);
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--teal) 40%, transparent);
 }
 
 .hero-role {
@@ -629,7 +629,7 @@ section {
     height: 8px;
     border-radius: 50%;
     background: var(--teal);
-    box-shadow: 0 0 0 4px rgba(27, 228, 200, 0.15);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--teal) 15%, transparent);
     flex-shrink: 0;
     animation: pulse 2s infinite;
 }
@@ -638,11 +638,11 @@ section {
 
     0%,
     100% {
-        box-shadow: 0 0 0 4px rgba(27, 228, 200, 0.15);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--teal) 15%, transparent);
     }
 
     50% {
-        box-shadow: 0 0 0 8px rgba(27, 228, 200, 0.05);
+        box-shadow: 0 0 0 8px color-mix(in srgb, var(--teal) 5%, transparent);
     }
 }
 
@@ -1255,13 +1255,13 @@ footer {
     height: 12px;
     border-radius: 50%;
     background: var(--teal);
-    box-shadow: 0 0 0 4px rgba(27, 228, 200, 0.15);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--teal) 15%, transparent);
     flex-shrink: 0;
     transition: box-shadow 0.3s;
 }
 
 .tl-item:hover .tl-dot {
-    box-shadow: 0 0 0 8px rgba(27, 228, 200, 0.1);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--teal) 10%, transparent);
 }
 
 .tl-line {
@@ -1359,9 +1359,9 @@ footer {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--teal);
-    border: 1px solid rgba(27, 228, 200, 0.25);
+    border: 1px solid color-mix(in srgb, var(--teal) 25%, transparent);
     padding: 4px 10px;
-    background: rgba(27, 228, 200, 0.04);
+    background: color-mix(in srgb, var(--teal) 4%, transparent);
 }
 
 /* ── FORMAÇÃO ACADÊMICA ── */
@@ -1394,7 +1394,7 @@ footer {
 }
 
 .edu-card--highlight {
-    border-left-color: rgba(27, 228, 200, 0.3);
+    border-left-color: color-mix(in srgb, var(--teal) 30%, transparent);
 }
 
 .edu-icon {
@@ -1443,9 +1443,9 @@ footer {
 }
 
 .edu-badge--active {
-    background: rgba(27, 228, 200, 0.12);
+    background: color-mix(in srgb, var(--teal) 12%, transparent);
     color: var(--teal);
-    border: 1px solid rgba(27, 228, 200, 0.3);
+    border: 1px solid color-mix(in srgb, var(--teal) 30%, transparent);
     animation: pulse 2s infinite;
 }
 
