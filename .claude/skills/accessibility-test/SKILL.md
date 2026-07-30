@@ -14,8 +14,30 @@ Modificações aplicadas nesta cópia:
 - Removido o framing "AUTONOMOUS MODE. Do NOT ask questions" e a instalação silenciosa de dependências (`npm install -D @axe-core/playwright` etc.) — a skill detecta e recomenda, mas mostra a lista de pacotes antes de instalar. Fica no fluxo fatiado normal (PR próprio, `tsc`/`vitest`/`build` + `auditoria-de-pr`).
 - Removida a seção "SELF-EVOLUTION TELEMETRY" do original — escrevia em `~/.claude/projects/.../skill-telemetry.md`, fora do repo e fora do nosso sistema de memória.
 - Stack local já é Vitest — vitest-axe é o caminho padrão aqui, jest-axe fica só como referência pra quem reusar a skill fora deste repo.
+- **2026-07-30 — correção de escopo (achado real, não hipotético):** a linha "Neste repo é sempre Next.js (App Router)" da Fase 1.1 **estava errada** — foi herdada do mix-webapp sem revisão e nunca se aplicou ao `welder-barroso-nevalo` (site estático vanilla, sem `package.json`, sem npm). Rodar a Fase 2 (`npm install -D @axe-core/playwright` etc.) e a Fase 4 (`npm run dev` + `npx playwright test`) como estão travaria de cara aqui. Adicionado o **Modo B — site estático** abaixo como caminho alternativo completo, validado numa auditoria real (Lighthouse rodado manualmente, JSON salvo em `logs/lighthouse-DATA/`, analisado por script). Ver `lessons.md` (`[acessibilidade] contraste, landmark e iframe sem title — achados reais do Lighthouse`) pro achado que originou esta correção.
 
 ---
+
+## Modo B — Site estático sem build (aplica-se a este repo)
+
+Se não há `package.json`/npm no repo (como aqui), **pule a Fase 1.1 (detecção de framework), a Fase 2 (setup de Playwright/vitest-axe) e a Fase 4.1 (`npm run dev`)** — nenhuma delas se aplica. Use este caminho no lugar:
+
+1. **Gerar o relatório Lighthouse** — não precisa instalar nada no repo:
+   - DevTools do Chrome/Edge → aba Lighthouse → categoria "Accessibility" (+ as outras se quiser aproveitar a rodada) → "Analyze page load" → exportar como JSON.
+   - Ou, se `node`/`npx` já existem na máquina (ferramenta global, não dependência do projeto): `npx lighthouse <url> --output json --output-path=logs/lighthouse-DATA/nome.json --only-categories=accessibility`.
+   - Salvar o JSON em `logs/lighthouse-<DATA>/` (não commitar sem necessidade — é artefato de diagnóstico, não código do site).
+2. **Rodar o alvo em pelo menos dois estados**, porque este site tem embeds *lazy* (`.iframe-placeholder`, ver `loadFigmaEmbed`): uma vez **sem clicar** nos placeholders (estado inicial, o que a maioria dos visitantes vê) e, se for auditar os embeds em si, uma vez **depois de clicar** — mas trate os dois como relatórios separados. Misturar os dois sem perceber gera números enganosos (ex.: um `total-byte-weight` de ~26 MB que na real é quase todo Figma/Netlify carregado pelo clique, não o site).
+3. **Extrair os achados reais**, ignorando ruído do ambiente de teste:
+   - `audits[id].details.items` com `source: "violation"` cujo `sourceLocation.url` começa com `chrome-extension://` **não é bug do site** — é extensão do navegador que rodou o teste (o próprio Lighthouse avisa isso em `runWarnings` quando acontece). Descarte.
+   - Da mesma forma, itens de `unused-javascript`/`unminified-javascript` com URL `chrome-extension://` são ruído, não código nosso.
+   - Achados com URL de terceiro que só aparece depois de clicar num placeholder lazy (Figma, `iteamflix-clone.netlify.app`) são peso **opt-in**, aceitável pelo próprio design do padrão *lazy* — não é regressão do nosso payload inicial, mas vale registrar como característica esperada se aparecer confuso numa auditoria futura.
+   - O que sobrar com `score < 1` e URL do próprio domínio (`welderbarroso.dev` ou o host local) é achado de verdade.
+4. Checklist mínimo pra não pular (mapeado direto pros IDs de audit do Lighthouse, pra facilitar o grep no JSON):
+   - `color-contrast` — combinação de tokens de cor com contraste insuficiente. **Já mordeu aqui**: `var(--mist2)` (`#3d5166`) direto sobre `var(--ink)`/`var(--deep)`/`var(--navy)` dá razão ~2.45, abaixo do mínimo 4.5 — não usar esse par pra texto sem escurecer o texto ou clarear o fundo.
+   - `landmark-one-main` — documento sem `<main>`. Fácil de esquecer numa página única sem framework (não há um "layout.tsx" que force isso).
+   - `frame-title` — `<iframe>` criado dinamicamente (`loadFigmaEmbed`, mockups de preview) sem `title`. Como o iframe nasce via JS depois do clique, é fácil esquecer o atributo no template.
+   - `image-alt`, `link-name`/`button-name`, `document-title`, `html-has-lang`, `aria-*` — mesma lista da Fase 3 original, só que lidos do JSON do Lighthouse em vez de gerados via axe-core/Playwright.
+5. Componha o relatório desta skill (seção OUTPUT abaixo) normalmente com o que sobrou — mesma estrutura, fonte de dados diferente.
 
 You detect the frontend framework, set up accessibility testing with axe-core and Lighthouse CI, generate a11y tests for all pages/routes, and produce a violations report organized by severity. You propose dependency installs and test files — you don't install or commit without showing what changed.
 

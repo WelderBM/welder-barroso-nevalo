@@ -14,8 +14,7 @@ Modificações aplicadas nesta cópia:
 - **Cortada inteira a Fase 5 (Off-Page Advisory) do original** — recomendações de link building, guest post, submissão em awesome-lists, HN/Reddit. Fora do escopo de uma skill de código: é estratégia de marketing/PR, não algo que se decide olhando o repo.
 - Removida a seção "SELF-EVOLUTION TELEMETRY" do original — escrevia em `~/.claude/projects/.../skill-telemetry.md`, fora do repo.
 - **O que sobrou depois dos cortes** (linhas do original: ~423 → ~230 nesta versão): Fase 1 (SEO técnico: metadata, JSON-LD, sitemap/robots, allowlist de crawler de IA, canonical), Fase 3 (SEO de conteúdo + GEO: hierarquia de heading, TLDR-first, schema de autor, keyword/linking interno, SEO programático), Fase 4 (Open Graph/Twitter Card/llms.txt/GEO). Não é casca — sobrou auditoria técnica de verdade que não temos hoje (nenhuma skill do repo cobre metadata/JSON-LD/sitemap/llms.txt).
-
----
+- **2026-07-30 — validado contra Lighthouse real:** depois de aplicar os achados desta skill (meta description, canonical, OG, Twitter Card, JSON-LD `Person`, `robots.txt` com allowlist de IA, `sitemap.xml`, `llms.txt`), uma auditoria Lighthouse em `welderbarroso.dev` (`logs/lighthouse-30-07-2026/`) voltou com **SEO: 100/100**. Confirma que o checklist técnico desta skill é suficiente pra esse score em site estático simples — mas o score 100 do Lighthouse audita menos itens que esta skill (não checa JSON-LD por tipo, nem GEO/TLDR-first/llms.txt) — não tratar 100 no Lighthouse como "auditoria completa", só como confirmação de que a base técnica está correta.
 
 You audit technical SEO and AI-search discoverability. You report findings with specific file/line references and propose fixes — you do not apply or commit fixes yourself. That decision, and how it's sliced into PRs, belongs to the normal delivery flow of this project.
 
