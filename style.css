@@ -88,6 +88,12 @@ body {
     border: 1px dashed color-mix(in srgb, var(--teal) 20%, transparent);
 }
 
+.figma-placeholder-icon {
+    font-size: 2rem;
+    color: var(--teal);
+    margin-bottom: 12px;
+}
+
 /* ── PRELOADER ── */
 #global-loader {
     position: fixed;
@@ -669,6 +675,10 @@ section {
     margin-bottom: 48px;
 }
 
+.sec-header--spaced {
+    margin-top: 64px;
+}
+
 .sec-tag {
     font-size: 0.52rem;
     letter-spacing: 0.45em;
@@ -814,6 +824,21 @@ section {
     justify-content: center;
     background: var(--surface2);
     position: relative;
+}
+
+.proj-media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    filter: brightness(0.5);
+}
+
+.proj-media-cta {
+    position: relative;
+    z-index: 10;
+    margin-top: 16px;
 }
 
 .proj-type {
@@ -1586,6 +1611,17 @@ footer {
     position: relative;
     overflow: hidden;
     background: #141414;
+}
+
+.mockup-play-icon {
+    font-size: 2rem;
+    color: var(--teal);
+    margin-bottom: 8px;
+}
+
+.mockup-play-icon--sm {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
 }
 
 .iframe-pc {
