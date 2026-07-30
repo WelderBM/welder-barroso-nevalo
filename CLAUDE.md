@@ -54,13 +54,13 @@ Fontes: **Bebas Neue** (títulos) · **Lora** (corpo serifado) · **DM Mono** (l
 - **Sem comentário decorativo** — só quando o *porquê* não é óbvio (decisão contra-intuitiva, limitação, bug que já mordeu).
 
 ## Fluxo de git (regra, não sugestão)
-> Estado atual: repo **single-branch**, default `Welder-Barooso-Nevalo` (sim, com esse
-> typo — usar a string exata, não "corrigir" o nome do branch). Esse é o branch de
-> **release/produção** — o que vai pro ar em welderbarroso.dev.
+> Estado atual: repo **single-branch**, default `main` (renomeado em 2026-07-30 a pedido do
+> Welder — antes era `Welder-Barooso-Nevalo`, com typo; a origin já reflete a troca). Esse é
+> o branch de **release/produção** — o que vai pro ar em welderbarroso.dev.
 
 - **Nunca commitar direto no branch de release.** Todo trabalho vive numa branch de feature.
 - **Setup único recomendado:** criar uma branch de integração `dev` a partir do release
-  (`git checkout Welder-Barooso-Nevalo && git pull && git checkout -b dev && git push -u origin dev`).
+  (`git checkout main && git pull && git checkout -b dev && git push -u origin dev`).
   Depois disso: toda branch de trabalho nasce de `dev`, todo PR volta pra `dev`, e o release
   é atualizado só por **promoção periódica** `dev` → release (não é o dia a dia).
 - **Uma mudança = uma branch = um PR** pequeno e revisável (modelo de dados/conteúdo →
