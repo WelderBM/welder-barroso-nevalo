@@ -1,0 +1,14 @@
+# Welder Barroso
+
+> Desenvolvedor frontend de Roraima, Brasil, com base sólida em arquitetura — criador da Nevalo.
+
+## Sobre
+- [Portfólio](https://welderbarroso.dev/): Projetos, stack, experiência profissional e formação de Welder Barroso.
+
+## Projetos
+- [Mix Webapp](https://mixnovidades.com/): E-commerce de presentes e decoração em produção, com Kit Builder e Central de Fitas.
+- [GitHub](https://github.com/WelderBM): Repositórios públicos e código-fonte dos projetos.
+
+## Contato
+- [LinkedIn](https://www.linkedin.com/in/welder-barroso-37b654207/): Perfil profissional.
+- [Email](mailto:welderbarroso.dev@gmail.com): Contato direto.
