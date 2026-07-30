@@ -69,7 +69,7 @@ não um item de backlog.
 ---
 
 ## [acessibilidade] Contraste, landmark e iframe sem title — achados reais do Lighthouse
-**Data:** 2026-07-30 · **Status:** aberto
+**Data:** 2026-07-30 · **Status:** resolvido (branch `fix/lighthouse-a11y-perf`, commit `23f865e`)
 
 **Sintoma:** rodando Lighthouse contra `welderbarroso.dev` (produção) e localhost
 (`logs/lighthouse-30-07-2026/*.json`, 3 relatórios), a categoria Accessibility ficou em
@@ -148,17 +148,21 @@ achar que o site pesa 26 MB de cara, o que é falso. **Daqui pra frente: sempre 
 estados separados — antes de clicar nos placeholders (payload real do primeiro load) e depois
 (payload do embed, opt-in) — e nunca somar os dois como se fossem a mesma coisa.**
 
-**Correção / padrão (não aplicada ainda — só diagnosticada):**
-1. Avaliar se dá pra reduzir o Font Awesome a um subset dos ícones realmente usados (kit
-   customizado do próprio Font Awesome, ou SVG inline pros ~15 ícones usados) — CLAUDE.md diz
-   "usar, não recarregar" o Font Awesome já carregado, então isso é uma mudança de _como_ ele
-   é servido, não um recarregamento; discutir antes de mexer.
-2. Confirmar se `globe.gl` já está atrás da degradação `isMobile` (CLAUDE.md menciona que sim
-   pra mobile) — o achado aqui é que mesmo no **desktop** ele pesa caro; avaliar lazy-load do
-   globo (ex.: só inicializar depois do primeiro paint, ou atrás de um `IntersectionObserver`
-   como o resto dos efeitos de entrada) antes de assumir que é aceitável do jeito que está.
-3. Resolver a dívida de imagens (~22 MB, entrada acima) já resolve boa parte do
-   `image-delivery-insight`.
+**Correção / padrão:**
+1. **Resolvido** (`fix/lighthouse-a11y-perf`, commit `23f865e`): `globe.gl` já estava atrás da
+   degradação `isMobile`, mas no desktop rodava síncrono no meio do carregamento crítico —
+   agora a criação do globo (`initGlobe()`) é adiada com `requestIdleCallback` (fallback
+   `setTimeout` pra navegador sem suporte), pra não competir com o main thread na janela
+   crítica. Não precisou de `IntersectionObserver`/`.reveal` porque o hero já está visível
+   desde o primeiro frame — adiar por tempo ocioso é o que faz sentido aqui, não por scroll.
+2. **Aberto**: Font Awesome via cdnjs carregando o kit inteiro pra ~15 ícones usados (98% do
+   CSS não usado). Não mexido ainda — subsetar exigiria o Kit builder do próprio Font Awesome
+   (conta + build) ou trocar pra SVG inline em cada ícone, e o CLAUDE.md pede "usar, não
+   recarregar" o que já está no `<head>`; qualquer uma das duas rotas muda _como_ o ícone é
+   servido, não é só "recarregar" — mas ainda assim é uma mudança de dependência/padrão que
+   merece confirmação explícita antes de aplicar, não decisão unilateral numa sessão de fix.
+3. **Aberto**: dívida de imagens (~22 MB, entrada acima) — resolver ela também resolve boa
+   parte do `image-delivery-insight`.
 
 **Gap de cobertura descoberto:** não existe skill de performance aplicável a este repo —
 `next-performance-guide` é 100% Next.js e não serve aqui (ver correção no `design-audit`).
