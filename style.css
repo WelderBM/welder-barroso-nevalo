@@ -65,6 +65,7 @@ body {
     cursor: pointer;
     transition: background 0.25s;
     gap: 4px;
+    -webkit-user-select: none;
     user-select: none;
     border: 1px dashed color-mix(in srgb, var(--teal) 20%, transparent);
 }
@@ -305,6 +306,7 @@ nav {
     background: linear-gradient(to bottom,
             color-mix(in srgb, var(--ink) 95%, transparent),
             transparent);
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
 }
 
